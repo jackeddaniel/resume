@@ -1,0 +1,174 @@
+%-------------------------------------------------------------------------------
+% Siddhant Anand Ugarkar - Resume
+% Compile with: pdflatex resume.tex
+%-------------------------------------------------------------------------------
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+% Icons are optional: if fontawesome5 isn't installed, fall back to plain text.
+\IfFileExists{fontawesome5.sty}{\usepackage{fontawesome5}}{%
+  \newcommand{\faEnvelope}{}\newcommand{\faPhone}{}%
+  \newcommand{\faMapMarker}{}\newcommand{\faGithub}{}%
+  \newcommand{\faLinkedin}{}\newcommand{\faCode}{}}
+\usepackage{latexsym}
+% Prefer Latin Modern + T1 when available (better glyphs, copy-pasteable text);
+% fall back to default Computer Modern on minimal TeX installs.
+\IfFileExists{lmodern.sty}{\usepackage[T1]{fontenc}\usepackage{lmodern}}{}
+\usepackage{textcomp}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+% ---------- Page geometry ----------
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.6in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% ---------- Section formatting ----------
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\titlerule \vspace{-5pt}]
+
+% Ensure the PDF is ATS-parsable (machine-readable text layer)
+\pdfgentounicode=1
+
+% ---------- Custom commands ----------
+\newcommand{\resumeItem}[1]{
+  \item\small{#1 \vspace{-3pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textit{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=1pt,parsep=0pt,topsep=0pt,partopsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%===============================================================================
+\begin{document}
+
+% ---------- HEADING ----------
+\begin{center}
+  {\LARGE \scshape Siddhant Anand Ugarkar} \\ \vspace{4pt}
+  \small
+  \href{mailto:siddhant.ugarkar@gmail.com}{\faEnvelope\ siddhant.ugarkar@gmail.com} $|$
+  \faPhone\ +91 99001 71336 $|$
+  \faMapMarker\ Bangalore, India \\ \vspace{2pt}
+  \href{https://github.com/jackeddaniel}{\faGithub\ GitHub} $|$
+  \href{https://linkedin.com/in/siddhant-ugarkar-93614b24b/}{\faLinkedin\ LinkedIn} $|$
+  \href{https://leetcode.com/u/buffbazooka/}{\faCode\ LeetCode}
+\end{center}
+
+% ---------- EDUCATION ----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {PES University, Bangalore}{2022 -- 2026}
+    {Bachelor of Technology in Computer Science Engineering}{}
+\resumeSubHeadingListEnd
+
+% ---------- SKILLS ----------
+\section{Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{\item{
+    \textbf{Programming Languages}{: C++, Go, Python, Scala, Ruby} \\
+    \textbf{Systems}{: Linux, POSIX Sockets, epoll(), TCP/IP, HTTP/1.1, Non-blocking I/O} \\
+    \textbf{Backend}{: Go net/http, Node.js, FastAPI, Ruby on Rails} \\
+    \textbf{Cloud}{: Azure} \\
+    \textbf{Databases}{: MySQL, PostgreSQL, MongoDB} \\
+    \textbf{Tools}{: Git, SSH, Neovim}
+  }}
+\end{itemize}
+\vspace{-12pt}
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Propheus}{January 2026 -- Present}
+    {Software Engineering Intern}{}
+    \resumeItemListStart
+      \resumeItem{Designed and implemented an Apache Spark (Scala) pipeline that processed 42 billion GPS pings spanning 243 days to infer residential locations for 69.6 million mobile advertising IDs.}
+      \resumeItem{Redesigned the execution pipeline to stream data day-by-day, enabling processing of 8 months of mobility data on a single 32-core, 100~GB machine without out-of-memory failures.}
+      \resumeItem{Diagnosed and fixed scoring artifacts in a redesigned ``graceful scoring'' algorithm --- adding evidence-scaling, NULL-safe intensity, and single-month consistency fixes that prevented single overnight stays from being misclassified as high-confidence homes.}
+      \resumeItem{Enriched outputs with geohash (GH7) and Bing Maps quadkey spatial identifiers for downstream map-based analytics, and deployed the pipeline across two regional datasets with all I/O on Azure Blob Storage (ADLS Gen2).}
+      \resumeItem{\textbf{Tech stack:} Scala, Apache Spark, Azure Blob Storage (ADLS Gen2), Python, Git.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {CognitiveLab}{October 2025 -- December 2025}
+    {Full-stack Engineering Intern}{}
+    \resumeItemListStart
+      \resumeItem{Developed distributed offline inference pipelines for Vision Language Models (Qwen, Gemma, DotsOCR) for OCR workloads.}
+      \resumeItem{Built and deployed scalable GPU-backed inference workflows on Modal for datasets exceeding 1,000 PDF documents.}
+      \resumeItem{Built a Next.js frontend for real-time inference and integrated multiple vLLM-supported models.}
+      \resumeItem{\textbf{Tech stack:} FastAPI, Modal, vLLM, Hugging Face, Next.js, Python, Git.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Vegam Solutions}{March 2025 -- April 2025}
+    {Software Engineering Intern}{}
+    \resumeItemListStart
+      \resumeItem{Developed production Ruby on Rails plugins for Redmine, replacing two third-party plugins used across the organization.}
+      \resumeItem{Automated PostgreSQL migrations and cron-based workflows to streamline ticket management across cross-functional teams.}
+      \resumeItem{\textbf{Tech stack:} Ruby on Rails, PostgreSQL.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+% ---------- PROJECTS ----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{Reverse Proxy \& Load Balancer} (from scratch) $|$ \emph{Go}}{}
+    \resumeItemListStart
+      \resumeItem{Built an L7 reverse proxy/load balancer in Go (net/http, httputil.ReverseProxy) with round-robin backend selection across health-checked backends, TLS termination + HTTP/2 via ALPN, and WebSocket proxying via raw connection hijacking.}
+      \resumeItem{Implemented an independent circuit breaker (closed/open/half-open state machine) alongside idempotent-only retry logic with exponential backoff --- verified a single request's exhausted retries alone trip the breaker open.}
+      \resumeItem{Built a TTL response cache honoring backend Cache-Control (no-store/max-age) and a hand-rolled per-client token-bucket rate limiter, both with background goroutine eviction and clean shutdown.}
+      \resumeItem{Benchmarked with wrk (50 conns, 2 threads) against a live FastAPI backend: 8,555 req/s on cache-miss vs.\ 9,478 req/s direct-to-backend ($\sim$10\% overhead, $\sim$0.5~ms added p50 latency) and 94,789 req/s on cache-hit; exposed hand-rolled Prometheus metrics (/metrics) and structured JSON access logs.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{HTTP/1.1 Web Server} (from scratch) $|$ \emph{C++, Linux}}{}
+    \resumeItemListStart
+      \resumeItem{Built a single-threaded HTTP/1.1 web server in modern C++ using Linux sockets and epoll(), implementing a per-connection state machine for fully non-blocking I/O serving static files.}
+      \resumeItem{Implemented persistent HTTP keep-alive connections, incremental request parsing, partial read/write handling, MIME type inference, path traversal protection and static file serving.}
+      \resumeItem{Benchmarked fork-per-connection, poll and epoll architectures under the wrk benchmark, achieving $\sim$82k requests/sec with keep-alive at 100 concurrent connections ($\sim$50\% of nginx under identical workloads).}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Custom Dynamic Memory Allocator} $|$ \emph{C++, Linux}}{}
+    \resumeItemListStart
+      \resumeItem{Implemented a custom malloc/free allocator using sbrk(), implementing boundary tags, segregated free lists and block coalescing, supporting 16-byte aligned memory allocations.}
+      \resumeItem{Implemented block splitting, immediate coalescing, power-of-two size-class binning and allocation metadata to reduce fragmentation.}
+      \resumeItem{Benchmarked against glibc malloc across throughput, p99 latency and fragmentation workloads while adding safety checks for double-free and invalid pointer detection.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\end{document}
+
